@@ -28,10 +28,11 @@ const Food: React.FC<IProps> = ({
 
   async function toggleAvailable(): Promise<void> {
     // TODO UPDATE STATUS (available)
+    setIsAvailable(!isAvailable);
   }
 
-  function setEditingFood(): void {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+  function setEditingFood(FoodId: number): void {
+    handleEditFood(food);
   }
 
   return (
@@ -51,7 +52,7 @@ const Food: React.FC<IProps> = ({
           <button
             type="button"
             className="icon"
-            onClick={() => setEditingFood()}
+            onClick={() => setEditingFood(food.id)}
             data-testid={`edit-food-${food.id}`}
           >
             <FiEdit3 size={20} />
